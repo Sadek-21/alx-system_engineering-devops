@@ -1,2 +1,9 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/hbt{2,5}n/).join
+
+def match_school(input)
+    regex = /hbtttn(t*)$/
+
+    match_result = input.match(regex)
+
+    puts match_result ? match_result[0] : ''
+end
