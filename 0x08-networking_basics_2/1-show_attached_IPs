@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Show attached IPs
-ifconfig | grep "inet " | tr ":" " " | awk '{print $3}'
+# Script tp display all IPV4 IPS on a machine
+
+ifconfig -a | grep inet | cut -d: -f2 | cut -d" "  -f1
