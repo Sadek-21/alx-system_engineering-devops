@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Run Apache on the holbertonschool/265-0 Docker container
+echo "ServerName 54.85.153.236" >> /etc/apache2.conf
+service apache2 start
