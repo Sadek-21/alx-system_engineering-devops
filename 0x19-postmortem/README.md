@@ -1,114 +1,39 @@
-0x19. Postmortem
-================
+# 0x19. Postmortem
 
--   By Sadek mohamed
--   Weight: 1
+**By Sadek Mohamed**
 
-Concepts
---------
+## Introduction
+In this project, I will write a postmortem report for a hypothetical outage that occurred in our system. A postmortem is a critical tool used in the tech industry to analyze the cause of an outage, understand the impact, and ensure it doesn't happen again.
 
-*For this project, students are expected to look at this concept:*
+## Issue Summary
+**Duration**: 3 hours, from 2:00 PM to 5:00 PM (UTC)  
+**Impact**: The main website was unavailable for 70% of users during the outage. As a result, users could not access key services, leading to significant frustration and potential loss of revenue.  
+**Root Cause**: A configuration error in the load balancer caused traffic to be routed incorrectly, overwhelming certain servers while leaving others underutilized.
 
--   [On-call](https://alx-intranet.hbtn.io/concepts/39)
+## Timeline
+- **2:00 PM**: Monitoring system alerted a sharp drop in server response times.
+- **2:05 PM**: The issue was confirmed by engineers, suspecting a sudden spike in traffic.
+- **2:10 PM**: The network team was notified, and initial investigations focused on potential DDoS attacks.
+- **2:30 PM**: Misleading debugging paths involved increasing security measures, which did not resolve the issue.
+- **3:00 PM**: The issue was escalated to the infrastructure team, who identified the load balancer configuration error.
+- **4:00 PM**: The load balancer settings were corrected, and services began to recover.
+- **5:00 PM**: Full functionality was restored, and monitoring confirmed stability.
 
-Background Context
-------------------
+## Root Cause and Resolution
+The root cause was an incorrect configuration in the load balancer, which led to uneven distribution of traffic. Some servers received too much traffic while others were idle. To fix the issue, we adjusted the load balancer settings to evenly distribute the load across all servers, restoring normal functionality.
 
-[![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/294/tWUPWmR.png)](https://youtu.be/rp5cVMNmbro)[](http://savefrom.net/?url=https%3A%2F%2Fyoutu.be%2Frp5cVMNmbro&utm_source=userjs-chrome&utm_medium=extensions&utm_campaign=link_modifier "Obtenir un lien direct")
+## Corrective and Preventative Measures
+To prevent this issue from recurring:
+- **Improve Load Balancer Configuration**: Review and update the configuration process to ensure settings are verified before deployment.
+- **Enhanced Monitoring**: Implement more granular monitoring to detect traffic imbalances sooner.
+- **Load Testing**: Conduct regular load tests to identify potential weaknesses in traffic distribution.
+- **Training**: Provide additional training for the team on load balancer configurations and traffic management.
 
-Any software system will eventually fail, and that failure can come stem from a wide range of possible factors: bugs, traffic spikes, security issues, hardware failures, natural disasters, human error... Failing is normal and failing is actually a great opportunity to learn and improve. Any great Software Engineer must learn from his/her mistakes to make sure that they won't happen again. Failing is fine, but failing twice because of the same issue is not.
+## Making It Engaging
+To make this postmortem more engaging, consider adding a humorous analogy:
+*"It was as if our load balancer was playing favorites, sending all the guests to one room while the others remained empty!"*
+Also, consider adding a simple diagram that shows how traffic was being misrouted before and after the fix.
 
-A postmortem is a tool widely used in the tech industry. After any outage, the team(s) in charge of the system will write a summary that has 2 main goals:
+## Additional Resources
+- **Postmortem Document**: [Google Docs Link](https://docs.google.com/document/d/1cc0O4o23eA4JnANrhi_cxkJIuysUhEKhO4Bc9Oaoua8/edit?usp=sharing)
 
--   To provide the rest of the company's employees easy access to information detailing the cause of the outage. Often outages can have a huge impact on a company, so managers and executives have to understand what happened and how it will impact their work.
--   And to ensure that the root cause(s) of the outage has been discovered and that measures are taken to make sure it will be fixed.
-
-Resources
----------
-
-**Read or watch**:
-
--   [Incident Report, also referred to as a Postmortem](https://alx-intranet.hbtn.io/rltoken/vkEjk-M6yBWW-wyB-7-I9Q "Incident Report, also referred to as a Postmortem")
--   [How to run a Postmortem](https://alx-intranet.hbtn.io/rltoken/pzE_VO7Bfe49K_MhkOyzdQ "How to run a Postmortem")
-
-More Info
----------
-
-### Manual QA Review
-
-**It is your responsibility to request a review for your postmortem from a peer before the project's deadline. If no peers have been reviewed, you should request a review from a TA or staff member.**
-
-Tasks
------
-
-### 0\. My first postmortem
-
-mandatory
-
-[![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/294/pQ9YzVY.gif)](https://twitter.com/devopsreact/status/834887829486399488)
-
-Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. Most of you will never have faced an outage, so just get creative and invent your own :)
-
-Requirements:
-
--   Issue Summary (that is often what executives will read) must contain:
-    -   duration of the outage with start and end times (including timezone)
-    -   what was the impact (what service was down/slow? What were user experiencing? How many % of the users were affected?)
-    -   what was the root cause
--   Timeline (format bullet point, format: `time` - `keep it short, 1 or 2 sentences`) must contain:
-
-    -   when was the issue detected
-    -   how was the issue detected (monitoring alert, an engineer noticed something, a customer complained...)
-    -   actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue)
-    -   misleading investigation/debugging paths that were taken
-    -   which team/individuals was the incident escalated to
-    -   how the incident was resolved
--   Root cause and resolution must contain:
-
-    -   explain in detail what was causing the issue
-    -   explain in detail how the issue was fixed
--   Corrective and preventative measures must contain:
-
-    -   what are the things that can be improved/fixed (broadly speaking)
-    -   a list of tasks to address the issue (be very specific, like a TODO, example: patch Nginx server, add monitoring on server memory...)
--   Be brief and straight to the point, between 400 to 600 words
-
-While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
-
-Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
-
-#### Add URLs here:
-
-Save
-
-1.  <https://docs.google.com/document/d/1cc0O4o23eA4JnANrhi_cxkJIuysUhEKhO4Bc9Oaoua8/edit?usp=sharing> Remove
-
-**Repo:**
-
--   GitHub repository: `alx-system_engineering-devops`
--   Directory: `0x19-postmortem`
--   File: `README.md`
-
- Done! Help
-
-### 1\. Make people want to read your postmortem
-
-#advanced
-
-We are constantly stormed by a quantity of information, it's tough to get people to read you.
-
-Make your post-mortem attractive by adding humour, a pretty diagram or anything that would catch your audience attention.
-
-Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
-
-#### Add URLs here:
-
-Save
-
-1.  <https://docs.google.com/document/d/1cc0O4o23eA4JnANrhi_cxkJIuysUhEKhO4Bc9Oaoua8/edit?usp=sharing> Remove
-
-**Repo:**
-
--   GitHub repository: `alx-system_engineering-devops`
--   Directory: `0x19-postmortem`
--   File: `README.md`
